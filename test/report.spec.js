@@ -6,7 +6,7 @@ test.cb('reports the data throughput', t => {
 
     reporter.write({ lines: 3, bytes: 21, elapsed: 0.011 });
     reporter.on('data', data => {
-        t.true(data === '1909.091 bytes/second\n');
+        t.true(data === '1909.091 bytes/sec\n');
         t.end(); 
     });
 });
@@ -16,7 +16,7 @@ test.cb('respects the verbose flag', t => {
 
     reporter.write({ lines: 3, bytes: 21, elapsed: 0.011 });
     reporter.on('data', data => {
-        t.true(data === '1909.091 bytes/second\n');
+        t.true(data === 'Hey this is the verbose version: rate 1909.091 bytes/sec\n');
         t.end(); 
     });
 });

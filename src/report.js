@@ -1,10 +1,16 @@
 const { Transform } = require('stream');
 
+/**
+ * Simple utility function to round numbers
+ */
 const round = function (number, places = 3) {
     const factor = Math.pow(10, places);
     return Math.round(number * factor) / factor;
 };
 
+/** 
+ * Main reporter function 
+ */
 const reporter = function (options) {
     const { verbose } = options || {};
 
@@ -14,9 +20,13 @@ const reporter = function (options) {
     
         write(chunk, encoding, callback) {
             const rate = round(chunk.bytes / chunk.elapsed);
-            const text = rate + ' bytes/second\n';
+            let text = `${rate} bytes/sec\n`;
+            if (verbose) {
+                text = `Hey this is the verbose version: rate ${rate} bytes/sec\n`;
+            }
+            
             this.push(text);
-//             callback();
+            callback();
         }
     });
 };
