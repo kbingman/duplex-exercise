@@ -15,11 +15,12 @@ const transform = function () {
             // Transform the chunk into a string
             const data = chunk.toString('utf8');
             const elapsed = (new Date() - start) / 1000;
-    
+            const lines = data.split(/\n/).length;
+        
             // Push the data onto the readable queue as an object
             this.push({ 
                 bytes: chunk.length,
-                lines: data.split(/\n/).length,
+                lines: lines,
                 elapsed: elapsed
             });
 //             callback();

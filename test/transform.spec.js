@@ -20,13 +20,15 @@ test.cb('records the length of bytes of the input buffer', t => {
     });
 });
 
-test.cb.skip('records the elapsed time', t => {
-    setTimeout(() => {
-        t.context.transformer.on('data', data => {
-            console.log(data);        
-            t.true(data.elapsed > 0);
-        });
-        t.context.transformer.write('testing\ntesting123\ntestingABC');
+// Creates a new instance of Transformer to test elapsed time
+test.cb('records the elapsed time', t => {
+    const transformer = Transformer();
+    transformer.on('data', data => {
+        t.true(data.elapsed > 0);
         t.end();
+    });
+    
+    setTimeout(() => {
+        transformer.write('testing\ntesting123\ntestingABC');
     }, 100);
 })

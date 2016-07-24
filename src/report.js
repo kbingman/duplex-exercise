@@ -5,7 +5,9 @@ const round = function (number, places = 3) {
     return Math.round(number * factor) / factor;
 };
 
-const reporter = function () {
+const reporter = function (options) {
+    const { verbose } = options || {};
+
     return new Transform({
     
         objectMode: true,
