@@ -1,0 +1,14 @@
+{
+  "name": "streams",
+  "version": "1.0.0",
+  "description": "- Try to avoid using third-party modules - Stick to node.js core APIs - Write a test to confirm your module works correctly",
+  "main": "index.js",
+  "scripts": {
+     "test": "ava test --verbose"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "ava": "^0.15.2"
+  }
+}
