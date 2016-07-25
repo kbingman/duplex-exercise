@@ -20,4 +20,19 @@ Imagine a usage like this:
 
 ```
 $ tail -f mylogfile | myscript --verbose
+
 ```
+
+## Notes
+
+I didn't make a binary, so usage is as follows. Certainly, one could be made for easier deployment, but for simple testing run:
+
+```
+$ tail -f logfile | node index.js --verbose
+```
+
+There is an NPM package file, but this is only required for tests. I used Ava, a fairly recent framework and setup the test command as the standard `npm test`.
+
+Output is simply piped to stdout. 
+
+
