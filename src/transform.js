@@ -1,4 +1,6 @@
-const { Transform } = require('stream');
+'use strict';
+
+const Transform = require('stream').Transform;
 
 /**
  * Main Transformer factory. Returns a new copy of the Transformer stream
@@ -18,12 +20,11 @@ const transform = function () {
             const lines = data.split(/\n/).length;
 
             // Push the data onto the readable queue as an object
-            this.push({ 
+            this.push({
                 bytes: chunk.length,
                 lines: lines,
                 elapsed: elapsed
             });
-//             callback();
         }
 
     });

@@ -1,18 +1,22 @@
-const { Transform } = require('stream');
+'use strict';
+
+const Transform = require('stream').Transform;
 
 /**
  * Simple utility function to round numbers
  */
-const round = function (number, places = 3) {
+const round = function (number, places) {
+    places = places || 3;
     const factor = Math.pow(10, places);
     return Math.round(number * factor) / factor;
 };
 
-/** 
- * Main reporter function 
+/**
+ * Main reporter function
  */
 const reporter = function (options) {
-    const { verbose } = options || {};
+    options = options || {}
+    const verbose = options.verbose;
 
     return new Transform({
 
@@ -26,7 +30,6 @@ const reporter = function (options) {
             }
 
             this.push(text);
-//             callback();
         }
     });
 };
