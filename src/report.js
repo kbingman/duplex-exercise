@@ -15,21 +15,20 @@ const reporter = function (options) {
     const { verbose } = options || {};
 
     return new Transform({
-    
+
         objectMode: true,
-    
+
         write(chunk, encoding, callback) {
             const rate = round(chunk.bytes / chunk.elapsed);
             let text = `${rate} bytes/sec\n`;
             if (verbose) {
-                text = `Hey this is the verbose version: rate ${rate} bytes/sec\n`;
+                text = `${chunk.lines} lines in total. Growth rate: ${rate} bytes/sec. Total bytes: ${chunk.bytes}.\n`;
             }
-            
+
             this.push(text);
-            callback();
+//             callback();
         }
     });
 };
-
 
 module.exports = reporter;

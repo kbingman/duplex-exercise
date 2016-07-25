@@ -16,7 +16,7 @@ test.cb('respects the verbose flag', t => {
 
     reporter.write({ lines: 3, bytes: 21, elapsed: 0.011 });
     reporter.on('data', data => {
-        t.true(data === 'Hey this is the verbose version: rate 1909.091 bytes/sec\n');
+        t.true(data === '3 lines in total. Growth rate: 1909.091 bytes/sec. Total bytes: 21.\n');
         t.end(); 
     });
 });

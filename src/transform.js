@@ -16,7 +16,7 @@ const transform = function () {
             const data = chunk.toString('utf8');
             const elapsed = (new Date() - start) / 1000;
             const lines = data.split(/\n/).length;
-        
+
             // Push the data onto the readable queue as an object
             this.push({ 
                 bytes: chunk.length,
@@ -25,7 +25,7 @@ const transform = function () {
             });
 //             callback();
         }
-    
+
     });
 };
 
